@@ -53,6 +53,14 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
             keep-mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+        sym_dot: sym_dot {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            flavor = "tap-unless-interrupted";
+            tapping-term-ms = <400>;
+            quick-tap-ms = <200>;
+            bindings = <&mo SYM_L>, <&kp DOT>;
+        };
     };
     chosen {
        zmk,matrix_transform =
@@ -70,6 +78,9 @@
 		wait-ms = <1>;
 		tap-ms = <5>;
 		bindings = <&kp PLUS &kp COLON &kp PLUS &kp N1 &kp COLON &kp RET>;
+		)
+      ZMK_MACRO(sym_dot,
+		bindings = <&lt SYM_L &dot>;
 		)
     };
     
@@ -92,7 +103,7 @@
  &kp TAB    &kp Q      &kp W      &kp E       &kp R          &kp T          &kp Y            &kp U          &kp I       &kp O      &kp P         &kp BKSP
  &kp ESC    &kp A      &kp S      &kp D       &kp F          &kp G          &kp H            &kp J          &kp K       &kp L      &kp QUOT      &kp RET
  &kp LSHFT  &kp Z      &kp X      &kp C       &kp V          &kp B          &kp N            &kp M          &kp SLASH   &langle    &kp UP        &rangle
- &mo NAV_L  &mo LCTRL  &kp LALT   &kp LGUI    &mo NUM_L          &kp SPACE                   &lt SYM_L &dot &colon      &kp LEFT   &kp DOWN      &kp RIGHT
+ &mo NAV_L  &mo LCTRL  &kp LALT   &kp LGUI    &mo NUM_L          &kp SPACE                   &sym_dot       &colon      &kp LEFT   &kp DOWN      &kp RIGHT
             >;
         };
 
